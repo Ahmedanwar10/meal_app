@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meal_app/screens/categories_screen.dart';
+import 'package:meal_app/screens/filter_screen.dart';
 import 'package:meal_app/screens/show_meal.dart';
 import 'package:meal_app/widgets/main_drawer.dart';
 
@@ -19,7 +20,22 @@ class _TabsScreenState extends State<TabsScreen> {
   void _showInfoMassage(String massage) {
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(massage),),);
+      SnackBar(
+        content: Text(massage),
+      ),
+    );
+  }
+
+  void _setScreen(String indentifier) {
+    if (indentifier == 'Filters') {
+      Navigator.of(context).pop();
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const FilterScreen(),
+        ),
+      );
+    }
   }
 
   void _toggeleMealfavoriteStates(Meal meal) {
@@ -58,7 +74,9 @@ class _TabsScreenState extends State<TabsScreen> {
         title: Text(ActivePageTitle),
       ),
       body: ActivePage,
-      drawer: MainDrawer(),
+      drawer: MainDrawer(
+        onSelectedScreen: _setScreen,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
         currentIndex: _selectedPageIndex,
