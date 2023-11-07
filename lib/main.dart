@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:meal_app/screens/splash_screen.dart';
 import 'package:meal_app/screens/tabs_screen.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-       debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           brightness: Brightness.dark,
@@ -21,7 +22,12 @@ class MyApp extends StatelessWidget {
         ),
         textTheme: GoogleFonts.latoTextTheme(),
       ),
-      home: TabsScreen(),
+      routes: { SplashScreen.routName: (context) => SplashScreen(),
+        TabsScreen.routName: (context) => TabsScreen(),
+
+      },
+      initialRoute: SplashScreen.routName,
+
     );
   }
 }

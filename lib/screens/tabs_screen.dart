@@ -16,6 +16,7 @@ const KInitialFilter = {
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen({Key? key}) : super(key: key);
+  static const String routName = "Tabs_Screen";
 
   @override
   State<TabsScreen> createState() => _TabsScreenState();
@@ -35,8 +36,8 @@ class _TabsScreenState extends State<TabsScreen> {
     );
   }
 
-  void _setScreen(String indentifier) {
-    if (indentifier == 'Filters') {
+  void _setScreen(String _indentifier) {
+    if (_indentifier == 'Filters') {
       Navigator.of(context).pop();
 
       Navigator.push(
