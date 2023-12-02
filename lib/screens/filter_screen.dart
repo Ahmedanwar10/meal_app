@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class FilterScreen extends StatefulWidget {
-  const FilterScreen({super.key, required this.currentFilters});
+import '../provider/filter_provider.dart';
+
+class FilterScreen extends ConsumerStatefulWidget {
+  const FilterScreen({
+    super.key,
+  });
 
   @override
-  State<FilterScreen> createState() => _FilterScreenState();
-  final Map<filter, bool> currentFilters;
+  ConsumerState<FilterScreen> createState() => _FilterScreenState();
 }
 
-enum filter {
-  glutenFree,
-  lactoseFree,
-  veganFree,
-  vegetarFree,
-}
-
-class _FilterScreenState extends State<FilterScreen> {
+class _FilterScreenState extends ConsumerState<FilterScreen> {
   bool _glutenFreeFilter = false;
   bool _lactoseFreeFilter = false;
   bool _veganFreeFilter = false;
@@ -24,10 +21,11 @@ class _FilterScreenState extends State<FilterScreen> {
   @override
   void initState() {
     super.initState();
-    _glutenFreeFilter = widget.currentFilters[filter.glutenFree]!;
-    _lactoseFreeFilter = widget.currentFilters[filter.lactoseFree]!;
-    _veganFreeFilter = widget.currentFilters[filter.veganFree]!;
-    _vegetarFreeFilter = widget.currentFilters[filter.vegetarFree]!;
+    final Map<filter, bool> ActiveFilters = ref.read(filtresProvider);
+    _glutenFreeFilter = ActiveFilters[filter.glutenFree]!;
+    _lactoseFreeFilter = ActiveFilters[filter.lactoseFree]!;
+    _veganFreeFilter = ActiveFilters[filter.veganFree]!;
+    _vegetarFreeFilter = ActiveFilters[filter.vegetarFree]!;
   }
 
   @override
@@ -52,13 +50,13 @@ class _FilterScreenState extends State<FilterScreen> {
       // ),
       body: WillPopScope(
         onWillPop: () async {
-          Navigator.of(context).pop({
+          ref.read(filtresProvider.notifier).setFilters({
             filter.glutenFree: _glutenFreeFilter,
             filter.lactoseFree: _lactoseFreeFilter,
             filter.veganFree: _veganFreeFilter,
             filter.vegetarFree: _vegetarFreeFilter,
           });
-          return false;
+          return true;
         },
         child: Column(
           children: [
