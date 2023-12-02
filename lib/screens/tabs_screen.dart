@@ -10,12 +10,6 @@ import '../provider/favourite_provider.dart';
 import '../provider/filter_provider.dart';
 import '../provider/meal_provider.dart';
 
-// const KInitialFilter = {
-//   filter.glutenFree: false,
-//   filter.lactoseFree: false,
-//   filter.veganFree: false,
-//   filter.vegetarFree: false,
-// };
 
 class TabsScreen extends ConsumerStatefulWidget {
   const TabsScreen({Key? key}) : super(key: key);
@@ -50,22 +44,6 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
       );
     }
   }
-
-// استخدمناها في provider اسهل
-  // void _toggeleMealfavoriteStates(Meal meal) {
-  //   final isExisting = _favouriteMel.contains(meal);
-  //   if (isExisting) {
-  //     setState(() {
-  //       _favouriteMel.remove(meal);
-  //     });
-  //     _showInfoMassage("Meal is no longer a favorite .");
-  //   } else {
-  //     setState(() {
-  //       _favouriteMel.add(meal);
-  //     });
-  //     _showInfoMassage("Maked as a favorite !");
-  //   }
-  // }
 
   void _selectPage(int index) {
     setState(() {
