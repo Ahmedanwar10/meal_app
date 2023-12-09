@@ -14,7 +14,6 @@ class FavouriteMealsNotifier extends StateNotifier<List<Meal>> {
       return true;
     }
 
-    // _showInfoMassage("Maked as a favorite !");
   }
 }
 

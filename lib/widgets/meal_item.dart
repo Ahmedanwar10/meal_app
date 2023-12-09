@@ -54,10 +54,10 @@ class MealItem extends StatelessWidget {
           children: [
             Image.network(meal.imageUrl),
             Positioned(
-              bottom: 20,
-              right: 10,
+              bottom: 2,
+              right: 0,
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 44, vertical: 6),
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 8),
                 color: Colors.black54,
                 child: Column(
                   children: [
@@ -75,7 +75,7 @@ class MealItem extends StatelessWidget {
                       height: 10,
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(15),
+                      padding: const EdgeInsets.all(0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
@@ -85,7 +85,12 @@ class MealItem extends StatelessWidget {
                               SizedBox(
                                 width: 4,
                               ),
-                              Text("$duration min"),
+                              Text(
+                                "$duration min",
+                                style: TextStyle(
+                                  color: Colors.white60,
+                                ),
+                              ),
                             ],
                           ),
                           SizedBox(
@@ -94,7 +99,12 @@ class MealItem extends StatelessWidget {
                           Row(
                             children: [
                               Icon(Icons.work),
-                              Text(complexityText),
+                              Text(
+                                complexityText,
+                                style: TextStyle(
+                                  color: Colors.white60,
+                                ),
+                              ),
                             ],
                           ),
                           SizedBox(
@@ -103,7 +113,12 @@ class MealItem extends StatelessWidget {
                           Row(
                             children: [
                               Icon(Icons.attach_money),
-                              Text(affordabilityText),
+                              Text(
+                                affordabilityText,
+                                style: TextStyle(
+                                  color: Colors.white60,
+                                ),
+                              ),
                             ],
                           ),
                         ],
